@@ -2,18 +2,15 @@ var myModule = angular.module("myModule", [
 	"ngRoute"
 	]);
 
-myModule.controller('blog', function($scope){
-	$scope.blogPosts = [
-		{"name": "Jim", "title": "Random Title", "content": "This is some content."},
-		{"name": "Terry", "title": "First Post", "content": "This is my awesome first post."},
-		{"name": "Sally", "title": "New Haircut", "content": "My new hair cut is AmAZING!@!!!! ( ͡° ͜ʖ ͡°)"},
-	];
+myModule.controller('blog', function($scope, $http){
 
-	$scope.productOrder = "name"; // Set Initial Order
+	// Get the json blog post data
 
-	$scope.changeOrder = function(theOrder) {
-		$scope.productOrder = theOrder;
-	};
+	$http.get("js/blogposts.json")
+   .success(function(response) {
+   	$scope.blogPosts = response.records;
+   	console.log($scope.blogPosts);
+   });
 });
 
 myModule.config(['$routeProvider', function($routeProvider) {
