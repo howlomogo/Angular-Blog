@@ -1,0 +1,16 @@
+
+<h1>Blog</h1>
+<div ng-controller="blog">
+	<div class="row" ng-repeat="blogPost in blogPosts">
+		<div class="col-md-12">
+			<h3>{{ blogPost.title }}</h3>
+			<hr>
+			<p>{{ blogPost.content }}</p>
+			<hr>
+			<h5>Posted By: {{ blogPost.name }}</h5>
+			<br>
+			<hr><hr>
+		</div>
+	</div>
+
+</div>
